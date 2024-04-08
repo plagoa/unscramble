@@ -5,11 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Unscramble</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+      .imageData {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .imageText {
+        width: 400px;
+        height: 300px;
+      }
+    </style>
   </head>
   <body>
-    <div style="display: flex; flex-direction: row; gap: 20px">
-      <div>
-        <textarea id="imagedata"></textarea>
+    <div class="container">
+      <div class="imageData">
+        <textarea class="imageText" id="imagedata"></textarea>
         <button onclick="unscramble()">Unscramble</button>
       </div>
       <div>
