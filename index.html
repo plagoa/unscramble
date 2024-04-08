@@ -7,7 +7,64 @@
     <title>Unscramble</title>
   </head>
   <body>
-    <canvas id="mycanvas" width="840" height="1200"></canvas>
-    <script src="image.js"></script>
+    <div style="display: flex; flex-direction: row; gap: 20px">
+      <div>
+        <textarea id="imagedata"></textarea>
+        <button onclick="unscramble()">Unscramble</button>
+      </div>
+      <div>
+        <canvas id="mycanvas" width="840" height="1200"></canvas>
+      </div>
+    </div>
   </body>
 </html>
+<script>
+  function unscramble() {
+    const canvas = document.getElementById("mycanvas");
+    const context = canvas.getContext("2d");
+
+    var image = new Image();
+
+    var textarea = document.getElementById("imagedata");
+    var imageData = textarea.value;
+
+    image.src = imageData;
+
+    const draw = function (fromX, fromY, toX, toY) {
+      context.drawImage(image, fromX, fromY, 210, 300, toX, toY, 210, 300);
+    };
+
+    const l1 = 0;
+    const l2 = 300;
+    const l3 = 600;
+    const l4 = 900;
+    const c1 = 0;
+    const c2 = 210;
+    const c3 = 420;
+    const c4 = 630;
+
+    image.onload = function () {
+      draw(c1, l1, c1, l1);
+      draw(c2, l1, c1, l2);
+      draw(c3, l1, c1, l3);
+      draw(c4, l1, c1, l4);
+
+      draw(c1, l2, c2, l1);
+      draw(c2, l2, c2, l2);
+      draw(c3, l2, c2, l3);
+      draw(c4, l2, c2, l4);
+
+      draw(c1, l3, c3, l1);
+      draw(c2, l3, c3, l2);
+      draw(c3, l3, c3, l3);
+      draw(c4, l3, c3, l4);
+
+      draw(c1, l4, c4, l1);
+      draw(c2, l4, c4, l2);
+      draw(c3, l4, c4, l3);
+      draw(c4, l4, c4, l4);
+    };
+  }
+
+  window.onload = init();
+</script>
